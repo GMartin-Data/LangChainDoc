@@ -4,4 +4,5 @@ jupyter<2
 langchain<2
 langchain-openai<2
 notebook<8
+openai<2
 python-dotenv<2
