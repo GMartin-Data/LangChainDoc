@@ -1,0 +1,7 @@
+ipykernel<7
+ipywidgets<8
+jupyter<2
+langchain<2
+langchain-openai<2
+notebook<8
+python-dotenv<2
