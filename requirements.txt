@@ -12,3 +12,4 @@ python-dotenv<2
 pytube<16
 tqdm<5
 whisper<2
+youtube-transcript-api<2
