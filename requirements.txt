@@ -10,6 +10,7 @@ notebook<8
 openai<2
 python-dotenv<2
 pytube<16
+scikit-learn<2
 tqdm<5
 whisper<2
 youtube-transcript-api<2
