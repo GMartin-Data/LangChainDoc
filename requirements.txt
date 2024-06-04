@@ -9,4 +9,6 @@ langserve[all]
 notebook<8
 openai<2
 python-dotenv<2
+pytube<16
 tqdm<5
+whisper<2
