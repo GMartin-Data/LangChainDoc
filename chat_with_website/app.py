@@ -1,3 +1,5 @@
+from langchain_core.messages import AIMessage, HumanMessage
+
 import streamlit as st
 
 
@@ -8,6 +10,9 @@ def get_response(user_input: str):
 # App config
 st.set_page_config(page_title="Chat with websites", page_icon="🤖")
 st.title("Chat with websites")
+chat_history = [
+    AIMessage("Hello, I am a bot, how can I help you?"),
+]
 
 # Sidebar
 with st.sidebar:
@@ -18,8 +23,9 @@ with st.sidebar:
 user_query = st.chat_input("Type your message here...")
 if user_query:
     response = get_response(user_query)
-    with st.chat_message("Human"):
-        st.write(user_query)
+    chat_history.append(HumanMessage(content=user_query))
+    chat_history.append(AIMessage(content=response))
 
-    with st.chat_message("AI"):
-        st.write(response)
+with st.sidebar:
+    st.write(chat_history)
+
