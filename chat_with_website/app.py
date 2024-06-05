@@ -1,3 +1,4 @@
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.messages import AIMessage, HumanMessage
 import streamlit as st
@@ -9,7 +10,11 @@ def get_response(user_input: str):
 
 def get_vectorstore_from_url(url: str):
     loader = WebBaseLoader(url)
-    documents = loader.load()
+    document = loader.load()
+
+    text_splitter = RecursiveCharacterTextSplitter()
+    documents = text_splitter.split_documents(document)
+
     return documents
 
 # App config
@@ -28,9 +33,9 @@ with st.sidebar:
 if not website_url:
     st.info("Please enter a Website URL")
 else:
-    documents = get_vectorstore_from_url(website_url)
+    document_chunks = get_vectorstore_from_url(website_url)
     with st.sidebar:
-        st.write(documents)
+        st.write(document_chunks)
     # User input
     user_query = st.chat_input("Type your message here...")
     if user_query:
