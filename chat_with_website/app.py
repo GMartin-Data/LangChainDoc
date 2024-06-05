@@ -1,11 +1,16 @@
+from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.messages import AIMessage, HumanMessage
-
 import streamlit as st
 
 
 # Functions
 def get_response(user_input: str):
     return "I don't know!"
+
+def get_vectorstore_from_url(url: str):
+    loader = WebBaseLoader(url)
+    documents = loader.load()
+    return documents
 
 # App config
 st.set_page_config(page_title="Chat with websites", page_icon="🤖")
@@ -23,6 +28,9 @@ with st.sidebar:
 if not website_url:
     st.info("Please enter a Website URL")
 else:
+    documents = get_vectorstore_from_url(website_url)
+    with st.sidebar:
+        st.write(documents)
     # User input
     user_query = st.chat_input("Type your message here...")
     if user_query:
