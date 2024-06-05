@@ -10,6 +10,7 @@ langchain-pinecone<2
 langserve[all]
 notebook<8
 openai<2
+pypdf<5
 python-dotenv<2
 pytube<16
 scikit-learn<2
