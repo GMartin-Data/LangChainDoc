@@ -1,3 +1,4 @@
+aiosqlite<2
 beautifulsoup4<5
 duckduckgo-search<7
 ipykernel<7
