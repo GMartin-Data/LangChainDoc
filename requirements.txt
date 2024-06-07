@@ -1,3 +1,4 @@
+beautifulsoup4<5
 duckduckgo-search<7
 ipykernel<7
 ipywidgets<8
@@ -12,9 +13,11 @@ langgraph<2
 langserve[all]
 notebook<8
 openai<2
+pygments<3
 pypdf<5
 python-dotenv<2
 pytube<16
+requests<3
 scikit-learn<2
 streamlit<2
 tavily-python<2
