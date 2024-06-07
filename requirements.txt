@@ -19,6 +19,7 @@ pypdf<5
 python-dotenv<2
 pytube<16
 requests<3
+rich<14
 scikit-learn<2
 streamlit<2
 tavily-python<2
