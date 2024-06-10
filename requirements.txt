@@ -14,6 +14,7 @@ langgraph<2
 langserve[all]
 notebook<8
 openai<2
+openai-whisper
 pygments<3
 pypdf<5
 python-dotenv<2
@@ -24,5 +25,4 @@ scikit-learn<2
 streamlit<2
 tavily-python<2
 tqdm<5
-whisper<2
 youtube-transcript-api<2
