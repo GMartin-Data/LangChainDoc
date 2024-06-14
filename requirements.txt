@@ -24,5 +24,6 @@ rich<14
 scikit-learn<2
 streamlit<2
 tavily-python<2
+tiktoken<2
 tqdm<5
 youtube-transcript-api<2
