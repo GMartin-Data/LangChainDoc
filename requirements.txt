@@ -1,6 +1,7 @@
 aiosqlite<2
 beautifulsoup4<5
 duckduckgo-search<7
+gradio<5
 grandalf<2
 ipykernel<7
 ipywidgets<8
