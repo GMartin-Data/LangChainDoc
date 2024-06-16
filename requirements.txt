@@ -12,6 +12,7 @@ langchain-openai<2
 langchain-pinecone<2
 langgraph<2
 langserve[all]
+langsmith<2
 notebook<8
 openai<2
 openai-whisper
