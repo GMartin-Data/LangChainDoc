@@ -3,8 +3,10 @@ from typing import Annotated
 
 from dotenv import load_dotenv
 from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_core.messages import (AnyMessage, HumanMessage, SystemMessage,
+from langchain_core.messages import (AnyMessage, BaseMessage, 
+                                     HumanMessage, SystemMessage,
                                      ToolMessage)
+from langchain_core.messages.ai import AIMessage
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import END, StateGraph
@@ -60,6 +62,7 @@ class Agent:
     
   def take_action(self, state: AgentState) -> AgentState:
     """Defines the function within the 'action' node"""
+    rprint("[bold red]To asnwer this, I need to browse the Web...[/bold red]")
     tool_calls = state["messages"][-1].tool_calls
     results = []
     for tool in tool_calls:
@@ -74,13 +77,13 @@ class Agent:
           content = str(tool_result)
         )
       )
-    rprint("Tool results transmitted to the model")
+    rprint("[bold blue]Tool results transmitted to the model[/bold blue]")
     return {"messages": results}
 
 
 # Set arguments, then instanciate
-model = ChatOpenAI(model="gpt-3.5-turbo")
-tools = [TavilySearchResults(max_results=2)]
+model = ChatOpenAI(model="gpt-4o")
+tools = [TavilySearchResults(max_results=4)]
 memory = SqliteSaver.from_conn_string(":memory:")
 prompt = """You are a smart research assistant. Use the search engine to look up information. \
 You are allowed to make multiple calls (either together or in sequence). \
@@ -103,6 +106,8 @@ if __name__ == "__main__":
       {"configurable": {"thread_id": "1"}}
     ):
         for value in event.values():
-          rprint(value["messages"])
-            # if isinstance(value["messages"][-1], BaseMessage):
-            #     rprint("Assistant:", value["messages"][-1].content)
+          message = value["messages"][-1]
+          if isinstance(message, AIMessage) and message.content:
+            rprint(message.content)
+        #     if isinstance(value["messages"][-1], BaseMessage):
+        #         rprint("Assistant:", value["messages"][-1].content)
