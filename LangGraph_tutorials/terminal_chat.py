@@ -3,9 +3,8 @@ from typing import Annotated
 
 from dotenv import load_dotenv
 from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_core.messages import (AnyMessage, BaseMessage, 
-                                     HumanMessage, SystemMessage,
-                                     ToolMessage)
+from langchain_core.messages import (AnyMessage, HumanMessage,
+                                     SystemMessage, ToolMessage)
 from langchain_core.messages.ai import AIMessage
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.sqlite import SqliteSaver
@@ -109,5 +108,3 @@ if __name__ == "__main__":
           message = value["messages"][-1]
           if isinstance(message, AIMessage) and message.content:
             rprint(message.content)
-        #     if isinstance(value["messages"][-1], BaseMessage):
-        #         rprint("Assistant:", value["messages"][-1].content)
