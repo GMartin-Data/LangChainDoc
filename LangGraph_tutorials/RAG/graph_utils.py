@@ -1,12 +1,12 @@
 from rich import print as rprint
 
-from .chains import (rag_chain,
+from chains import (rag_chain,
                      retrieval_grade_chain,
                      question_rewriter_chain,
                      hallucination_grade_chain,
                      answer_grade_chain)
-from .data_models import GraphState
-from .retrieval import retriever
+from data_models import GraphState
+from retrieval import retriever
 
 
 # NODES FUNCTIONS

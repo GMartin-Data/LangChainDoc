@@ -4,12 +4,12 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableLambda
 from langchain_openai import ChatOpenAI
 
-from .data_models import GradeDocuments, GradeHallucinations, GradeAnswer
-from .prompts import (retrieval_grade_prompt,
+from data_models import GradeDocuments, GradeHallucinations, GradeAnswer
+from prompts import (retrieval_grade_prompt,
                       hallucination_grade_prompt,
                       answer_grade_prompt,
                       question_rewriter_prompt)
-from .retrieval import retriever
+
 
 # Environment should be sourced somewhere else
 load_dotenv()
