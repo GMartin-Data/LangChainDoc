@@ -11,8 +11,9 @@ from prompts import (retrieval_grade_prompt,
                       question_rewriter_prompt)
 
 
-# Environment should be sourced somewhere else
+# SOURCE ENVIRONMENT
 load_dotenv()
+
 
 # INSTANCIATE LLM
 llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
@@ -55,4 +56,24 @@ question_rewriter_chain = (question_rewriter_prompt
                            | llm
                            | StrOutputParser()
                            )
-  
+
+# Entrypoint to test
+if __name__ == "__main__":    
+    from rich import print as rprint
+    
+    from retrieval import retriever
+    
+
+    load_dotenv()
+    question = "agent memory"
+    docs = retriever.invoke(question)
+    # Retrieve docs
+    for idx, doc in enumerate(docs):
+        rprint(f" Chunk {idx} ".center(100, "#"))
+        rprint(doc.page_content)
+    # Grade docs
+    for idx, doc in enumerate(docs):
+        doc_txt = doc.page_content
+        print(f" Relevance test for chunk {idx} ".center(150, "#"))
+        grade = retrieval_grade_chain.invoke({"question": question, "document": doc_txt})
+        print("Is the current chunk relevant for the question? ", grade)
