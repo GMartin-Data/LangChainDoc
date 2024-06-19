@@ -67,11 +67,12 @@ if __name__ == "__main__":
     load_dotenv()
     question = "agent memory"
     docs = retriever.invoke(question)
-    # Retrieve docs
+    # TEST retrieval_grade_chain
+    ## Retrieve docs
     for idx, doc in enumerate(docs):
         rprint(f" Chunk {idx} ".center(100, "#"))
         rprint(doc.page_content)
-    # Grade docs
+    ## Grade docs
     for idx, doc in enumerate(docs):
         doc_txt = doc.page_content
         print(f" Relevance test for chunk {idx} ".center(150, "#"))
