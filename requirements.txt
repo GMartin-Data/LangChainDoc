@@ -10,14 +10,17 @@ langchain[docarray]<2
 langchainhub<2
 langchain-chroma<2
 langchain-community<2
+langchain-experimental<2
 langchain-openai<2
 langchain-pinecone<2
 langgraph<2
 langserve[all]
 langsmith<2
+matplotlib<4
 notebook<8
 openai<2
 openai-whisper
+pandas<3
 pygments<3
 pypdf<5
 python-dotenv<2
