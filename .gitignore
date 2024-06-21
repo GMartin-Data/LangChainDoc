@@ -202,3 +202,5 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/linux,python,jupyternotebooks
 
 example_data/
+
+NOTES.md
