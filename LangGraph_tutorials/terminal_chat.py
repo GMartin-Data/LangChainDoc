@@ -54,7 +54,7 @@ class Agent:
     message = self.model.invoke(messages)
     return {"messages": [message]}
     
-  def exists_action(self, state: AgentState) -> AgentState:
+  def exists_action(self, state: AgentState) -> bool:
     """Checks if an action is to take according to presence of tool calls"""
     last_message = state["messages"][-1]
     return len(last_message.tool_calls) > 0
